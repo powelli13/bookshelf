@@ -5,3 +5,11 @@
 <div>
     Hi there and welcome to the demo route @ViewData["Name"]!
 </div>
+
+<form action="/demo/setname" method="post">
+    <input type="text" name="name" />
+
+    <button type="submit">
+        Change Name
+    </button>
+</form>
