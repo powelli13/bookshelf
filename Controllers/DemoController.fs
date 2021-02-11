@@ -18,8 +18,8 @@ type DemoController (bookService: IBookService) =
         this.View()
 
     [<HttpPost>]
-    member this.SetName (name:string) =
+    member this.SetName (book:BookModel) =
         let routeDict = new Dictionary<string, string>()
-        routeDict.["name"] <- name
+        routeDict.["name"] <- book.Name
 
         this.RedirectToAction("Index", routeDict)
