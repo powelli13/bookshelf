@@ -1,4 +1,4 @@
-namespace bookshelf.Models
+namespace Bookshelf.Models
 
 open System
 

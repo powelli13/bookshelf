@@ -1,4 +1,4 @@
-﻿namespace bookshelf
+﻿namespace Bookshelf
 
 // TODO figure out how to use bookshelf.Models namespace in here
 

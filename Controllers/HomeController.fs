@@ -9,7 +9,7 @@ open System.Diagnostics
 open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Logging
 
-open bookshelf.Models
+open Bookshelf.Models
 
 type HomeController (logger : ILogger<HomeController>) =
     inherit Controller()

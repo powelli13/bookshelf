@@ -1,25 +1,19 @@
-namespace bookshelf.Controllers
+namespace Bookshelf.Controllers
 
-open bookshelf
-open bookshelf.Models
+open Bookshelf
+open Bookshelf.Models
 open Microsoft.AspNetCore.Mvc
-open System.Collections.Generic
 
 type DemoController (bookService: IBookService) =
     inherit Controller()
 
-    member this.Index (name:string) =
-        let viewDataName = if not (isNull name) then name else "Test Name 2"
-        this.ViewData.Add("Name", viewDataName)
+    member this.Index (book:BookModel) =
+        //let books = bookService.GetBooksForUser("test")
+        //this.ViewData.Add("Books", books)
 
-        let books = bookService.GetBooksForUser("test")
-        this.ViewData.Add("Books", books)
-
-        this.View()
+        this.View(book)
 
     [<HttpPost>]
-    member this.SetName (book:BookModel) =
-        let routeDict = new Dictionary<string, string>()
-        routeDict.["name"] <- book.Name
+    member this.CreateBook (book:BookModel) =
 
-        this.RedirectToAction("Index", routeDict)
+        this.RedirectToAction("Index", book)

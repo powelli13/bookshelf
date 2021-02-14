@@ -1,17 +1,36 @@
 @{
     ViewData["Title"] = "Demo";
 }
+@model BookModel
 
-<div>
-    Hi there and welcome to the demo route @ViewData["Name"]!
-</div>
+@if (Model != null)
+{
+    <div>
+        Title: @Model.Title
+    </div>
+    <div>
+        Author: @Model.Author
+    </div>
+    <div>
+        Published: @Model.Published
+    </div>
+}
+else
+{
+    <div>No book data to display.</div>
+}
 
-<div>@ViewData["Books"]</div>
+<form action="/demo/createbook" method="post">
+    <label for="title">Title</label>
+    <input type="text" name="title" />
+    
+    <label for="author">Author</label>
+    <input type="text" name="author" />
 
-<form action="/demo/setname" method="post">
-    <input type="text" name="name" />
+    <label for="published">Publish Date</label>
+    <input type="date" name="published" />
 
     <button type="submit">
-        Change Name
+        Create Book
     </button>
 </form>
