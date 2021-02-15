@@ -8,13 +8,11 @@ type DemoController (bookService: IBookService) =
     inherit Controller()
 
     member this.Index () =
-        //let books = bookService.GetBooksForUser("test")
-        //this.ViewData.Add("Books", books)
         let books = bookService.GetAllBooks()
 
         this.View(books)
 
     [<HttpPost>]
     member this.CreateBook (book:BookModel) =
-
+        // TODO call IBookService method to write book to db
         this.RedirectToAction("Index", book)
