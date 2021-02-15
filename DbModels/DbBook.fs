@@ -6,5 +6,5 @@ type [<CLIMutable>] DbBook =
     { Id: int
       Title: string
       Author: string
-      Published: DateTime
+      YearPublished: Nullable<int>
     }

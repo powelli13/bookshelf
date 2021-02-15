@@ -2,6 +2,8 @@ namespace Bookshelf
 
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
+open Microsoft.EntityFrameworkCore
+open Microsoft.EntityFrameworkCore.Sqlite
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
@@ -16,6 +18,11 @@ type Startup private () =
         // Add framework services.
         services.AddControllersWithViews().AddRazorRuntimeCompilation() |> ignore
         services.AddRazorPages() |> ignore
+
+        // Add database context
+        services.AddDbContext<BookshelfContext>(fun (optionsBuilder) ->
+            optionsBuilder.UseSqlite(@"Data Source=.\SqlScripts\bookshelf.db") |> ignore
+        ) |> ignore
         services.AddTransient<IBookService, BookService>() |> ignore
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,11 +7,12 @@ open Microsoft.AspNetCore.Mvc
 type DemoController (bookService: IBookService) =
     inherit Controller()
 
-    member this.Index (book:BookModel) =
+    member this.Index () =
         //let books = bookService.GetBooksForUser("test")
         //this.ViewData.Add("Books", books)
+        let books = bookService.GetAllBooks()
 
-        this.View(book)
+        this.View(books)
 
     [<HttpPost>]
     member this.CreateBook (book:BookModel) =

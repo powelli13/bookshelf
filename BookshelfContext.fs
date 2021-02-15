@@ -10,9 +10,12 @@ type BookshelfContext =
     new() = { inherit DbContext() }
     new(options: DbContextOptions<BookshelfContext>) = { inherit DbContext(options) }
 
-    // TODO need to override OnModelCreating for any reason?
-    override __.OnConfiguring (optionsBuilder:DbContextOptionsBuilder) =
-        optionsBuilder.UseSqlite() |> ignore
+    // TODO replace with data source coming from configuration
+    //override __.OnConfiguring (optionsBuilder:DbContextOptionsBuilder) =
+        //optionsBuilder.UseSqlite(@"Data Source=.\SqlScripts\bookshelf.db") |> ignore
+
+    override __.OnModelCreating modelBuilder =
+        modelBuilder.Entity<DbBook>().ToTable("Books").HasKey("Id") |> ignore
 
     [<DefaultValue>]
     val mutable books:DbSet<DbBook>

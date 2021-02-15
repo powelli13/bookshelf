@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="BookService.fs" />
+    <None Include="SqlScripts\Initial_Sqlite.sql" />
     <Compile Include="DbModels\DbBook.fs" />
     <Compile Include="Models/BookModel.fs" />
     <Compile Include="Models/ErrorViewModel.fs" />
+    <Compile Include="BookshelfContext.fs" />
+    <Compile Include="BookService.fs" />
     <Compile Include="Controllers/HomeController.fs" />
     <Compile Include="Controllers/DemoController.fs" />
-    <Compile Include="BookshelfContext.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
@@ -29,5 +30,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup />
 
 </Project>

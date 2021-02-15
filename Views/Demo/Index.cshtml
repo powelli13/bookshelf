@@ -1,19 +1,22 @@
 @{
     ViewData["Title"] = "Demo";
 }
-@model BookModel
+@model IEnumerable<BookModel>
 
 @if (Model != null)
 {
-    <div>
-        Title: @Model.Title
-    </div>
-    <div>
-        Author: @Model.Author
-    </div>
-    <div>
-        Published: @Model.Published
-    </div>
+    @foreach (var book in Model)
+    {
+        <div>
+            Title: @book.Title
+        </div>
+        <div>
+            Author: @book.Author
+        </div>
+        <div>
+            Published: @book.YearPublished
+        </div>
+    }
 }
 else
 {
@@ -27,8 +30,8 @@ else
     <label for="author">Author</label>
     <input type="text" name="author" />
 
-    <label for="published">Publish Date</label>
-    <input type="date" name="published" />
+    <!--<label for="published">Publish Date</label>
+    <input type="date" name="published" />-->
 
     <button type="submit">
         Create Book
