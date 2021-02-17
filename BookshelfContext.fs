@@ -15,7 +15,9 @@ type BookshelfContext =
         //optionsBuilder.UseSqlite(@"Data Source=.\SqlScripts\bookshelf.db") |> ignore
 
     override __.OnModelCreating modelBuilder =
-        modelBuilder.Entity<DbBook>().ToTable("Books").HasKey("Id") |> ignore
+        modelBuilder.Entity<DbBook>()
+            .ToTable("Books")
+            .HasKey(fun b -> b.Id :> obj) |> ignore
 
     [<DefaultValue>]
     val mutable books:DbSet<DbBook>

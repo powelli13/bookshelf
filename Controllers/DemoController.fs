@@ -14,5 +14,6 @@ type DemoController (bookService: IBookService) =
 
     [<HttpPost>]
     member this.CreateBook (book:BookModel) =
-        // TODO call IBookService method to write book to db
-        this.RedirectToAction("Index", book)
+        // TODO error detection and return error codes
+        bookService.CreateBook(book)
+        this.RedirectToAction("Index")

@@ -2,7 +2,7 @@ namespace Bookshelf.Models
 
 open System
 
-type BookModel (title:string, author:string, yearPublished:int) =
+type BookModel (title:string, author:string, yearPublished:Nullable<int>) =
     member val Title = title with get, set
     member val Author = author with get, set
     member val YearPublished = yearPublished with get, set
