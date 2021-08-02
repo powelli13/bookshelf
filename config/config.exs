@@ -7,6 +7,12 @@
 # General application configuration
 use Mix.Config
 
+config :bookshelf, Bookshelf.Repo,
+  database: "bookshelf_repo",
+  username: "user",
+  password: "pass",
+  hostname: "localhost"
+
 config :bookshelf,
   ecto_repos: [Bookshelf.Repo]
 
