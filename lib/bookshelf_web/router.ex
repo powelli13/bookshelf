@@ -17,6 +17,10 @@ defmodule BookshelfWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/books",
+      BookController,
+      only: [:index]
   end
 
   # Other scopes may use custom stacks.
