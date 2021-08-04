@@ -1,3 +1,27 @@
 <div>
-Here are the books!
+All Books
 </div>
+
+<div>
+  <%= link "Create Book", 
+    to: Routes.book_path(@conn, :new) %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for book <- @books do %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.isbn %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

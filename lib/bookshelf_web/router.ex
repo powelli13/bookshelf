@@ -19,8 +19,8 @@ defmodule BookshelfWeb.Router do
     get "/", PageController, :index
 
     resources "/books",
-      BookController,
-      only: [:index]
+              BookController,
+              only: [:index, :new, :create]
   end
 
   # Other scopes may use custom stacks.
