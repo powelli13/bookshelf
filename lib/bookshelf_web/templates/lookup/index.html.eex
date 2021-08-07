@@ -1,0 +1,2 @@
+<div>Here is the test value:</div>
+<div><%= @value %></div>

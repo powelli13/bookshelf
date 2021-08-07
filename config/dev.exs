@@ -1,5 +1,9 @@
 use Mix.Config
 
+# Testing out config values
+config :bookshelf,
+  test_var: System.get_env("TEST_ENV_VAR")
+
 # Configure your database
 config :bookshelf, Bookshelf.Repo,
   username: System.get_env("DB_USER"),

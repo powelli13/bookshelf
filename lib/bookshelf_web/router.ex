@@ -18,6 +18,8 @@ defmodule BookshelfWeb.Router do
 
     get "/", PageController, :index
 
+    get "/lookup", LookupController, :index
+
     resources "/books",
               BookController,
               only: [:index, :new, :create]
