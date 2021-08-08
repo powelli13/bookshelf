@@ -1,6 +1,3 @@
-<div>Here is the test value:</div>
-<div><%= @value %></div>
-
 <%= form_for @conn,
     Routes.lookup_path(@conn, :modify_message),
     fn f -> %>
@@ -11,4 +8,4 @@
 <% end %>
 
 <div>Modified Message:</div>
-<div><%= @value %></div>
+<div><%= assigns[:value] %></div>

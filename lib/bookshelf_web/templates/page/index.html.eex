@@ -1,9 +1,13 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "bookshelf" %></h1>
   <p>Read. Connect. Grow.</p>
-  <%= link "View Books", 
-    to: Routes.book_path(@conn, :index) %>
-  <%= link "Lookup a Book", 
-    to: Routes.lookup_path(@conn, :index) %>
+  <div>
+    <%= link "View Books", 
+      to: Routes.book_path(@conn, :index) %>
+  </div>
+  <div>
+    <%= link "Lookup a Book", 
+      to: Routes.lookup_path(@conn, :index) %>
+  </div>
 </section>
 
