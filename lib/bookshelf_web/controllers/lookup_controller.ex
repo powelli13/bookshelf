@@ -6,4 +6,10 @@ defmodule BookshelfWeb.LookupController do
 
     render(conn, "index.html", value: test_value)
   end
+
+  def modify_message(conn, %{"message" => message}) do
+    modified = Bookshelf.IsbnLookup.modify_message(message)
+
+    render(conn, "index.html", value: modified)
+  end
 end

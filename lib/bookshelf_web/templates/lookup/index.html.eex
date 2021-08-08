@@ -1,2 +1,14 @@
 <div>Here is the test value:</div>
 <div><%= @value %></div>
+
+<%= form_for @conn,
+    Routes.lookup_path(@conn, :modify_message),
+    fn f -> %>
+  <div>
+    <%= text_input f, :message, placeholder: "Message" %>
+  </div>
+  <%= submit "Test Message Modification" %>
+<% end %>
+
+<div>Modified Message:</div>
+<div><%= @value %></div>

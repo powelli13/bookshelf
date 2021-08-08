@@ -3,5 +3,7 @@
   <p>Read. Connect. Grow.</p>
   <%= link "View Books", 
     to: Routes.book_path(@conn, :index) %>
+  <%= link "Lookup a Book", 
+    to: Routes.lookup_path(@conn, :index) %>
 </section>
 
