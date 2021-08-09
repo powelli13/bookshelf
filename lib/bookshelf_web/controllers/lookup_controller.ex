@@ -10,4 +10,11 @@ defmodule BookshelfWeb.LookupController do
 
     render(conn, "index.html", value: modified)
   end
+
+  def lookup_book(conn, %{"isbn" => isbn}) do
+    #TODO sanitize
+    book = Bookshelf.IsbnLookup.lookup_title(isbn)
+
+    render(conn, "index.html", value: book)
+  end
 end

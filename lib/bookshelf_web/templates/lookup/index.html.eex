@@ -1,11 +1,11 @@
 <%= form_for @conn,
-    Routes.lookup_path(@conn, :modify_message),
+    Routes.lookup_path(@conn, :lookup_book),
     fn f -> %>
   <div>
-    <%= text_input f, :message, placeholder: "Message" %>
+    <%= text_input f, :isbn, placeholder: "ISBN" %>
   </div>
-  <%= submit "Test Message Modification" %>
+  <%= submit "Lookup Title" %>
 <% end %>
 
-<div>Modified Message:</div>
+<div>Found Book:</div>
 <div><%= assigns[:value] %></div>

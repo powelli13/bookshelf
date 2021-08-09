@@ -2,7 +2,8 @@ use Mix.Config
 
 # Testing out config values
 config :bookshelf,
-  test_var: System.get_env("TEST_ENV_VAR")
+  test_var: System.get_env("TEST_ENV_VAR"),
+  gbooks_key: System.get_env("GBOOKS_KEY")
 
 # Configure your database
 config :bookshelf, Bookshelf.Repo,
