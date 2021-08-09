@@ -14,8 +14,7 @@ defmodule Bookshelf.IsbnLookup do
   def lookup_title(isbn) do
     case HTTPoison.get(url(isbn)) do
       {:ok, %{status_code: 200, body: body}} ->
-        decoded = Poison.decode!(body)
-        decoded["kind"]
+        get_first_volume_title(body)
 
       {:ok, %{status_code: 404}} ->
         "404 returned!"
@@ -25,7 +24,15 @@ defmodule Bookshelf.IsbnLookup do
     end
   end
 
+  defp get_first_volume_title(body) do
+    decoded = Poison.decode!(body)
+    IO.inspect decoded
+    first_book = hd decoded["items"]
+    IO.inspect first_book
+    IO.inspect first_book["volumeInfo"]["title"]
+  end
+
   defp url(query) do
-    "#{@base}?q=isbn:" <> URI.encode_query(q: query)
+    "#{@base}?q=isbn:" <> URI.encode(query)
   end
 end
