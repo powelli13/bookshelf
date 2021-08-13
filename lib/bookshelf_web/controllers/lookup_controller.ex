@@ -2,7 +2,7 @@ defmodule BookshelfWeb.LookupController do
   use BookshelfWeb, :controller
 
   def index(conn, _) do
-    render(conn, "index.html")
+    render(conn, "index.html", value: %{})
   end
 
   def modify_message(conn, %{"message" => message}) do

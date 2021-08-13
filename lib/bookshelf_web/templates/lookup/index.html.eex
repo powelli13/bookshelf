@@ -8,4 +8,6 @@
 <% end %>
 
 <div>Found Book:</div>
-<div><%= assigns[:value] %></div>
+<div>Title: <%= Map.get(assigns[:value], "title", "") %></div>
+<div>Author: <%= Map.get(assigns[:value], "author", "") %></div>
+<div>Description: <%= Map.get(assigns[:value], "description", "") %></div>
