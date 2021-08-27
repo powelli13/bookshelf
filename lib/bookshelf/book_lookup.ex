@@ -1,15 +1,12 @@
-defmodule Bookshelf.IsbnLookup do
+defmodule Bookshelf.BookLookup do
   @moduledoc """
-  Looks up book information given the ISBN.
+  Looks up book information given search term,
+  accepts either ISBN or Title.
+  TODO make a book struct??
   Returns a [] struct containing the information or
   informs the caller of any errors that occurred during lookup.
   """
   @base "https://www.googleapis.com/books/v1/volumes"
-
-  def modify_message(message) do
-    test_value = Application.fetch_env!(:bookshelf, :test_var)
-    "Here is the original message:\n#{message}\nHere is the test env var:\n#{test_value}"
-  end
 
   def lookup_by_title(title) do
     case HTTPoison.get(title_url(title)) do
