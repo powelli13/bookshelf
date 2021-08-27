@@ -2,7 +2,8 @@
     Routes.lookup_path(@conn, :lookup_book),
     fn f -> %>
   <div>
-    <%= text_input f, :isbn, placeholder: "ISBN" %>
+    <%= select f, :query_type, ["Title", "ISBN"] %>
+    <%= text_input f, :query, placeholder: "Search term" %>
   </div>
   <%= submit "Lookup Title" %>
 <% end %>

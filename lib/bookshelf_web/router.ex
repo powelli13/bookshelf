@@ -20,7 +20,7 @@ defmodule BookshelfWeb.Router do
 
     get "/lookup", LookupController, :index
 
-    #post "/lookup", LookupController, :modify_message
+    # post "/lookup", LookupController, :modify_message
 
     post "/lookup", LookupController, :lookup_book
 

@@ -5,14 +5,28 @@ defmodule Bookshelf.IsbnLookup do
   informs the caller of any errors that occurred during lookup.
   """
   @base "https://www.googleapis.com/books/v1/volumes"
-  
+
   def modify_message(message) do
     test_value = Application.fetch_env!(:bookshelf, :test_var)
     "Here is the original message:\n#{message}\nHere is the test env var:\n#{test_value}"
   end
 
-  def lookup_title(isbn) do
-    case HTTPoison.get(url(isbn)) do
+  def lookup_by_title(title) do
+    case HTTPoison.get(title_url(title)) do
+      {:ok, %{status_code: 200, body: body}} ->
+        # TODO update this to be a list
+        get_first_volume_info(body)
+
+      {:ok, %{status_code: 404}} ->
+        "404 returned!"
+
+      {:error, %{reason: reason}} ->
+        "Error was returned!"
+    end
+  end
+
+  def lookup_by_isbn(isbn) do
+    case HTTPoison.get(isbn_url(isbn)) do
       {:ok, %{status_code: 200, body: body}} ->
         get_first_volume_info(body)
 
@@ -26,8 +40,8 @@ defmodule Bookshelf.IsbnLookup do
 
   defp get_first_volume_info(body) do
     decoded = Poison.decode!(body)
-    first_book = hd decoded["items"]
-    author = hd first_book["volumeInfo"]["authors"]
+    first_book = hd(decoded["items"])
+    author = hd(first_book["volumeInfo"]["authors"])
 
     %{
       "title" => first_book["volumeInfo"]["title"],
@@ -36,7 +50,11 @@ defmodule Bookshelf.IsbnLookup do
     }
   end
 
-  defp url(query) do
+  defp isbn_url(query) do
     "#{@base}?q=isbn:" <> URI.encode(query)
+  end
+
+  defp title_url(query) do
+    "#{@base}?q=title:" <> URI.encode(query)
   end
 end
